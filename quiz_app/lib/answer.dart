@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 
+import 'helper.dart';
+
 class Answer extends StatefulWidget {
   final bool isTrue;
   final String answer;
   final bool isDisabled;
   final Function disbleButton;
   final Function addScore;
+
   const Answer({
     Key? key,
     required this.answer,
@@ -21,8 +24,12 @@ class Answer extends StatefulWidget {
 
 class _AnswerState extends State<Answer> {
   var myColor = Colors.blue;
+
   @override
   Widget build(BuildContext context) {
+    if (!AnswerState.isAnswered) {
+      myColor = Colors.blue;
+    }
     return Container(
       width: double.infinity,
       height: 50,
@@ -32,6 +39,7 @@ class _AnswerState extends State<Answer> {
         onPressed: widget.isDisabled
             ? null
             : () {
+                AnswerState.isAnswered = true;
                 if (widget.isTrue) {
                   widget.addScore();
                 }

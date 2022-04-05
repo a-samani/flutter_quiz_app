@@ -1,7 +1,6 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'answer.dart';
+import 'helper.dart';
 import 'question.dart';
 
 class Quiz extends StatefulWidget {
@@ -70,6 +69,7 @@ class _QuizState extends State<Quiz> {
         _index++;
         _moveButtonDisable = true;
         _isDisabled = false;
+        AnswerState.isAnswered = false;
       });
     }
   }
@@ -114,7 +114,7 @@ class _QuizState extends State<Quiz> {
                   key: null);
             }).toList(),
             Container(
-              padding: EdgeInsets.all(10),
+              padding: const EdgeInsets.all(10),
               child: Row(
                 children: [
                   ElevatedButton(
